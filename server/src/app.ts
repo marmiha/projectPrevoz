@@ -35,10 +35,29 @@ app.use('/home', (req, res) => {
     res.render("index", {page:'home', body: "home", menuId:'HOME'});
 });
 
-app.use('/prevozi', (req, res) => {
-    let sJson = JSON.stringify(cJson);
-    let json = JSON.parse(sJson);
+app.all('/prevozi', (req, res) => {
+    const sJson = JSON.stringify(cJson);
+    const json = JSON.parse(sJson);
     res.render("index", {page:'prevozi', body: "prevozi", menuId:'PREVOZI', dataPrevozi: json.carshare_list});
+});
+
+app.all('/prevozi/:from/:to/:date', (req, res) =>{
+    const from = req.params.from;
+    const to   = req.params.to;
+    const date = req.params.date;
+
+    //console.log(from + to + date);
+
+    const axios = require("axios");
+    axios.get("https://prevoz.org/api/search/shares/?f=" + from + "&fc=SI&t=" + to + "&tc=SI&d=" + date + "&exact=false&intl=false")
+        .then(resapi => {
+            //console.log(res.data.property);
+            const dataPrevozi = resapi.data.carshare_list;
+            res.render("index", {page:'prevozi', body: "prevozi", menuId:'PREVOZI', dataPrevozi: dataPrevozi});
+        })
+        .catch(err => {
+            console.log(err);
+        })
 });
 
 /* Defined routes */
