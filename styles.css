@@ -1,0 +1,62 @@
+body {
+    min-width: 38.5em;
+    width: 100%;
+}
+
+header {
+    font-size: 2em;
+    font-variant: small-caps;
+    text-align: center;
+    float: left;
+    display: block;
+    width: 95%;
+    margin-left: 2%;
+    margin-right: 2%;
+    background-color: rgb(197, 255, 197);
+}
+
+.prevoz {
+    outline-width: 2px;
+    outline-color: rgb(197, 255, 197);
+    outline-style: solid;
+    padding: 3px;
+    float: left;
+    display: block;
+    width: 16em;
+    min-height: 15em;
+    margin-left: 2%;
+    margin-top: 25px;
+    background-color: rgb(243, 243, 243)
+}
+
+.prevoz * {
+    padding-left: 4px;
+    padding-top: 2px;
+    background-color: rgb(197, 255, 197);
+    display: inherit;
+}
+
+.prevoz time {
+    background-color:aquamarine;
+}
+
+.prevoz route{
+    background-color:  rgb(76, 243, 187);
+    /* padding-left: 20%; */
+}
+.prevoz tel {
+    background-color:  rgb(23, 247, 172);
+}
+
+.prevoz car_info {
+    background-color: rgb(192, 131, 250);
+}
+
+.prevoz author {
+    outline: 2px;
+    outline-color: black;
+}
+
+.prevoz comment {
+    background-color: lightgray !important;
+}
