@@ -5,6 +5,6 @@ Created for the sole purpose of not needing to click on each of the available ri
 ### Requirements
 - BaseX installation (http://basex.org/download/) for XQuery
 
-### TODO
+### Todo
 - Online acssessible server.
 - Get rid of the BaseX installation requirement
