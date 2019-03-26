@@ -1,0 +1,16 @@
+<form onSubmit="return redirect();">
+    <input placeholder="From" id="from" type="text" maxlength="55" class="box" autofocus />
+    <input placeholder="To" id="to" type="text" maxlength="55" class="box" autofocus />
+    <input placeholder="YYYY-MM-DD" id="date" type="text" maxlength="55" class="box" autofocus />
+    <input type="submit" class="submit" value="SUBMIT" />
+</form>
+
+<script>
+    function redirect(){
+        var from = document.getElementById('from').value;
+        var to = document.getElementById('to').value;
+        var date = document.getElementById('date').value;
+        window.location.href = "./" + from + "/" + to + "/" + date;
+        return false;
+    }
+</script>

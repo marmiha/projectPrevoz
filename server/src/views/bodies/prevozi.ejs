@@ -1,6 +1,6 @@
 <%for(prevoz in dataPrevozi){%>
     <% prevoz = dataPrevozi[prevoz] %>
-    <%- include("../templates/prevoz", {author: prevoz.author, price: prevoz.price, time: prevoz.time, tel: prevoz.contact, car_info: prevoz.car__info, comment: prevoz.comment})%>
+    <%- include("../templates/prevoz", {author: prevoz.author, price: prevoz.price, time: prevoz.time, tel: prevoz.contact, car_info: prevoz.car_info, comment: prevoz.comment})%>
 <%}%>
 
 <style>
