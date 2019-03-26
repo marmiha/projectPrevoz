@@ -24,19 +24,46 @@ app.use(function (req, res, next) {
     next();
 })
 /********************/
-
+let visits = 0;
 
 
 app.all('/', (req, res) => {
     res.redirect("/home");
 });
 
+/**
+ * Create a menu item object
+ * @param id - links to navbar id selector and views/bodies/home.ejs
+ * @param name - displayed name in the navbar
+ * @param href - redirect link
+ */
+var menuItem = function(id, name, href) {
+    this.id = id;
+    this.name = name;
+    this.href = href;
+}
+
+
+var menuItems = [
+    new menuItem("home", "Home", "/home"),
+    new menuItem("prevozi", "Prevozi", "/prevozi")
+];
+
 app.use('/home', (req, res) => {
-    res.render("index", {page:'home', body: "home", menuId:'HOME'});
+    visits ++;
+    res.render("index",
+        {body: "home",
+            menuId:'home',
+            menuItems: menuItems
+        });
 });
 
 app.all('/prevozi', (req, res) => {
-    res.render("index", {page:'prevozi', body: "prevozi_input", menuId:'PREVOZI'});
+    res.render("index",
+        {body: "prevozi_input",
+            menuId:'prevozi',
+            menuItems: menuItems
+        });
 });
 
 app.all('/prevozi/:from/:to/:date', (req, res) =>{
@@ -51,7 +78,12 @@ app.all('/prevozi/:from/:to/:date', (req, res) =>{
         .then(resapi => {
             //console.log(res.data.property);
             const dataPrevozi = resapi.data.carshare_list;
-            res.render("index", {page:'prevozi', body: "prevozi", menuId:'PREVOZI', dataPrevozi: dataPrevozi});
+            res.render("index",
+                {body: "prevozi",
+                    menuId:'prevozi',
+                    menuItems: menuItems,
+                    dataPrevozi: dataPrevozi
+                });
         })
         .catch(err => {
             console.log(err);
@@ -65,3 +97,9 @@ app.use('/api/prevozi', prevoziRouter);
 app.listen(port, () => {
     console.log("Express server has started on port " + port);
 });
+
+setInterval(() => {
+    var d = new Date();
+    var n = d.toLocaleTimeString();
+    console.log(n + " visits: " + visits);
+}, 60000)

@@ -10,8 +10,13 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li id="home"><a href="/">HOME</a></li>
-                <li id="about"><a href="/prevozi">PREVOZI</a></li>
+
+                <% menuItems.forEach((item) => {
+                    var active = (menuId == item.id ? "active" : "");
+                %>
+                <li id="<%= item.id %>" class="nav-item <%= active %>"><a href="<%= item.href %>"><%= item.name%></a></li>
+                <% });%>
+
             </ul>
         </div>
     </div>
