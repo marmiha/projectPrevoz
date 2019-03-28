@@ -1,4 +1,5 @@
 
+
 <%for(prevoz in dataPrevozi){%>
     <% prevoz = dataPrevozi[prevoz] %>
     <%- include("../templates/prevoz", {date: prevoz.date, author: prevoz.author, price: prevoz.price, time: prevoz.time, to: prevoz.to, from: prevoz.from, tel: prevoz.contact, car_info: prevoz.car_info, comment: prevoz.comment})%>
@@ -15,10 +16,10 @@ body {
     outline-color: rgb(197, 255, 197);
     outline-style: solid;
     padding: 3px;
-
-
-
-
+    float: left;
+    display: block;
+    width: 16em;
+    min-height: 15em;
     margin-left: 2%;
     margin-top: 25px;
     background-color: rgb(243, 243, 243)
